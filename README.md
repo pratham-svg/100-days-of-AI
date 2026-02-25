@@ -17,6 +17,7 @@ This project is built using the **uv** package manager for fast, reliable depend
 
 - `day-01/`: initial setup
 - `day-02-lcel-execution-model/`: Deep dive into LangChain Expression Language (LCEL).
+- `day-03-memory-systems/`: Mastering Conversation Memories and State management.
 
 ## 🚀 Getting Started
 
