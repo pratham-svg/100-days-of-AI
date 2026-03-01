@@ -1,4 +1,4 @@
-# Day 4: RAG Foundations 🧠
+# Day 4: RAG Foundations 🧠 (Retrieval-Augmented Generation)
 
 Welcome to Phase 2 of the 100 Days of AI! Today we move from basic chains to **Retrieval-Augmented Generation (RAG)**. This is where AI starts working with _your_ private data.
 
