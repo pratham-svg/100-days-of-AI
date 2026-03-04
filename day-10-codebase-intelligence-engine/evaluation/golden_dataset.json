@@ -1,0 +1,14 @@
+[
+  {
+    "question": "What does the login function do?",
+    "ground_truth": "The login function validates user credentials, calls validate_token, and returns a JWT on success."
+  },
+  {
+    "question": "How is the database connection initialized?",
+    "ground_truth": "The database connection is initialized in db.py using SQLAlchemy's create_engine with connection pooling."
+  },
+  {
+    "question": "What authentication method does the API use?",
+    "ground_truth": "The API uses JWT bearer token authentication with a 24 hour expiry."
+  }
+]
