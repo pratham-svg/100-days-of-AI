@@ -1,6 +1,6 @@
 # 🧠 Day 10 — Codebase Intelligence Engine
 
-### My Complete Step-by-Step Build Guide
+### My Complete Step-by-Step Build Guide | [🚀 Project Verification (Day 11)](../day-11-project-verification/README.md)
 
 ---
 
