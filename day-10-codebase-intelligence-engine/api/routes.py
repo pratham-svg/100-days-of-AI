@@ -31,6 +31,18 @@ async def index_repository(request: IndexRequest):
         
         chunks = chunk_repository(file_paths, repo_name)
         
+        # Filter out empty or whitespace-only chunks to avoid API errors
+        chunks = [c for c in chunks if c.content.strip()]
+        
+        if not chunks:
+            return {
+                "status": "success",
+                "repo": repo_name,
+                "files_indexed": len(file_paths),
+                "chunks_indexed": 0,
+                "warning": "No non-empty chunks extracted from code files."
+            }
+
         # Build vocab from all chunks for sparse encoding
         all_texts = [c.content for c in chunks]
         global _vocab

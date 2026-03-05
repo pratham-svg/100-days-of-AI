@@ -13,13 +13,13 @@ client = QdrantClient(url=QDRANT_URL, api_key=QDRANT_API_KEY)
 def create_collection():
     """
     Creates a Qdrant collection with both dense and sparse vectors.
-    Safe to call multiple times — checks if collection exists first.
+    Deletes existing collection if it exists to ensure correct vector configuration.
     """
     existing_collections = [c.name for c in client.get_collections().collections]
     
     if COLLECTION_NAME in existing_collections:
-        print(f"Collection '{COLLECTION_NAME}' already exists. Skipping creation.")
-        return
+        print(f"Collection '{COLLECTION_NAME}' already exists. Deleting to recreate with correct schema...")
+        client.delete_collection(collection_name=COLLECTION_NAME)
     
     client.create_collection(
         collection_name=COLLECTION_NAME,
@@ -30,7 +30,7 @@ def create_collection():
             "sparse": SparseVectorParams(index=SparseIndexParams(on_disk=False))
         }
     )
-    print(f"Collection '{COLLECTION_NAME}' created.")
+    print(f"Collection '{COLLECTION_NAME}' created with dense and sparse vector support.")
 
 
 def upsert_chunks(

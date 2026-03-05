@@ -4,13 +4,22 @@ from pathlib import Path
 from git import Repo
 from config import SUPPORTED_EXTENSIONS
 
+def on_rm_error(func, path, exc_info):
+    """
+    Error handler for shutil.rmtree.
+    Handles read-only files (common on Windows with .git folder).
+    """
+    import stat
+    os.chmod(path, stat.S_IWRITE)
+    func(path)
+
 def clone_repo(repo_url: str, target_dir: str = "./tmp_repo") -> str:
     """
     Clones a GitHub repo to a local directory.
     Returns the path to the cloned repo.
     """
     if os.path.exists(target_dir):
-        shutil.rmtree(target_dir)  # Clean up any previous clone
+        shutil.rmtree(target_dir, onerror=on_rm_error)  # Clean up any previous clone
     
     print(f"Cloning {repo_url}...")
     Repo.clone_from(repo_url, target_dir)
