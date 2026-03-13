@@ -21,4 +21,5 @@ dependencies = [
 members = [
     "day-10-codebase-intelligence-engine",
     "day-15-pr-review-agent",
+    "day-19-resume-screener-agent",
 ]
